@@ -4,20 +4,17 @@
 
 :root {
   --bg: #0a0a0a;
-  --panel: #111111;
-  --panel-2: #151515;
-  --border: #2a2a2a;
-  --text: #f5f5f5;
+  --surface: #111111;
+  --surface-2: #141414;
+  --border: #262626;
+  --border-soft: #1f1f1f;
+  --text: #fafafa;
   --muted: #a1a1aa;
   --muted-2: #71717a;
-  --primary: #ffffff;
-  --primary-text: #111111;
+  --input-bg: #0d0d0f;
+  --white: #ffffff;
+  --black: #111111;
   --danger: #ef4444;
-  --danger-text: #ffffff;
-  --secondary: #1c1c1f;
-  --secondary-text: #f5f5f5;
-  --input-bg: #0f0f10;
-  --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 body {
@@ -29,12 +26,16 @@ body {
 
 #root {
   width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
 }
 
 .app {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 28px 24px 40px;
+  min-height: 100vh;
+  background: var(--bg);
 }
 
 .header {
@@ -43,9 +44,10 @@ body {
 
 .header h1 {
   margin: 0 0 8px;
-  font-size: 34px;
+  font-size: 40px;
+  line-height: 1.05;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text);
 }
 
@@ -56,19 +58,21 @@ body {
 }
 
 .panel {
-  background: var(--panel);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 24px;
-  padding: 22px;
+  padding: 24px;
   margin-bottom: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.01),
+    0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
 .panel h2 {
-  margin-top: 0;
-  margin-bottom: 18px;
+  margin: 0 0 18px;
   font-size: 18px;
+  font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .field {
@@ -96,20 +100,22 @@ input[type="file"],
 textarea {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 14px 16px;
   background: var(--input-bg);
   color: var(--text);
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="file"]:focus,
 textarea:focus {
-  border-color: #4b5563;
-  background: #121214;
+  border-color: #3f3f46;
+  background: #101013;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
 }
 
 input::placeholder,
@@ -119,15 +125,16 @@ textarea::placeholder {
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .preview {
   width: 100%;
-  max-width: 420px;
-  border-radius: 18px;
+  max-width: 460px;
+  border-radius: 20px;
   border: 1px solid var(--border);
-  background: #0c0c0d;
+  display: block;
+  background: #090909;
 }
 
 .subtext {
@@ -138,23 +145,24 @@ textarea {
 
 .actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 button {
   border: 1px solid transparent;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 12px 18px;
-  background: var(--primary);
-  color: var(--primary-text);
+  background: var(--white);
+  color: var(--black);
   cursor: pointer;
-  font-weight: 600;
-  transition: opacity 0.2s ease, transform 0.02s ease, background 0.2s ease;
+  font-weight: 700;
+  transition: opacity 0.2s ease, transform 0.02s ease,
+    background 0.2s ease, border-color 0.2s ease;
 }
 
 button:hover {
-  opacity: 0.92;
+  opacity: 0.94;
 }
 
 button:active {
@@ -162,19 +170,19 @@ button:active {
 }
 
 button.secondary {
-  background: var(--secondary);
-  color: var(--secondary-text);
+  background: #18181b;
+  color: var(--text);
   border-color: var(--border);
 }
 
 button.danger {
   background: var(--danger);
-  color: var(--danger-text);
+  color: var(--white);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   gap: 18px;
 }
 
@@ -182,14 +190,14 @@ button.danger {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: var(--panel-2);
-  box-shadow: var(--shadow);
+  background: var(--surface-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .imageWrap {
   aspect-ratio: 16 / 10;
-  background: #0c0c0d;
-  border-bottom: 1px solid var(--border);
+  background: #0b0b0c;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .imageWrap img {
@@ -204,6 +212,7 @@ button.danger {
   justify-content: center;
   height: 100%;
   color: var(--muted-2);
+  font-size: 14px;
 }
 
 .cardBody {
@@ -212,8 +221,10 @@ button.danger {
 
 .cardBody h3 {
   margin: 0 0 10px;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.2;
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .date {
@@ -223,9 +234,9 @@ button.danger {
 }
 
 .comment {
-  min-height: 48px;
+  min-height: 52px;
   color: #d4d4d8;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .empty {
@@ -242,11 +253,11 @@ label {
 
 @media (max-width: 640px) {
   .app {
-    padding: 16px;
+    padding: 16px 16px 28px;
   }
 
   .header h1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .panel {
@@ -256,5 +267,13 @@ label {
 
   .card {
     border-radius: 20px;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  button {
+    width: auto;
   }
 }
